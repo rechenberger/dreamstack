@@ -50,6 +50,7 @@
     "@nrwl/tao": "11.1.5",
     "@nrwl/web": "11.1.5",
     "@nrwl/workspace": "11.1.5",
+    "@nx-extend/strapi": "^1.0.4",
     "@testing-library/react": "11.1.2",
     "@types/jest": "26.0.8",
     "@types/node": "12.12.38",
