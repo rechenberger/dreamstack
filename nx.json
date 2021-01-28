@@ -17,6 +17,7 @@
   },
   "projects": {
     "next": { "tags": [] },
-    "next-e2e": { "tags": [], "implicitDependencies": ["next"] }
+    "next-e2e": { "tags": [], "implicitDependencies": ["next"] },
+    "strapi": { "tags": [] }
   }
 }
