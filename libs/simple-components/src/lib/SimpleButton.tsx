@@ -1,4 +1,8 @@
-import React, { FunctionComponent } from 'react'
+import React, {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  FunctionComponent,
+} from 'react'
 import tw from 'tailwind-styled-components'
 
 const StyledSimpleButton = tw.button`
@@ -13,15 +17,7 @@ const StyledSimpleButton = tw.button`
 `
 
 export const SimpleButton: FunctionComponent<
-  React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >
+  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 > = ({ children, ...props }) => {
-  return (
-    <StyledSimpleButton>
-      <button {...props}></button>
-      {children}
-    </StyledSimpleButton>
-  )
+  return <StyledSimpleButton {...props}>{children}</StyledSimpleButton>
 }
