@@ -1,1 +1,1 @@
-export * from './lib/simple-components'
+export * from './lib/SimpleButton'
