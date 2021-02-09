@@ -49,15 +49,6 @@
             "jestConfig": "apps/next/jest.config.js",
             "passWithNoTests": true
           }
-        },
-        "build-tailwind-css": {
-          "executor": "@nrwl/workspace:run-commands",
-          "outputs": [],
-          "options": {
-            "commands": [
-              "yarn postcss apps/next/pages/styles.css -o apps/next/pages/tailwind.css"
-            ]
-          }
         }
       }
     },
