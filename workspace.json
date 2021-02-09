@@ -50,12 +50,12 @@
             "passWithNoTests": true
           }
         },
-        "build-tailwind-css-production": {
+        "build-tailwind-css": {
           "executor": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
             "commands": [
-              "NODE_ENV=production yarn postcss apps/next/pages/styles.css -o apps/next/pages/tailwind.css"
+              "yarn postcss apps/next/pages/styles.css -o apps/next/pages/tailwind.css"
             ]
           }
         }
