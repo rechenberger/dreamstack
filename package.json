@@ -6,7 +6,7 @@
     "nx": "nx",
     "start": "nx serve",
     "build": "nx build",
-    "build:vercel": "nx run next:build-tailwind-css && nx build next --outputPath .",
+    "build:vercel": "NODE_ENV=production nx run next:build-tailwind-css && nx build next --outputPath .",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
