@@ -10,8 +10,14 @@ const StyledPage = styled.div`
 export function Index() {
   return (
     <StyledPage>
-      <h1>DreamStack</h1>
-      <SimpleButton>SimpleButton</SimpleButton>
+      <h1 className="text-4xl mb-4">DreamStack</h1>
+      <a
+        href="https://github.com/rechenberger/dreamstack"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <SimpleButton>Fork me on GitHub</SimpleButton>
+      </a>
     </StyledPage>
   )
 }
