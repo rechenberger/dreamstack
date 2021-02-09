@@ -8,7 +8,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "root": "apps/next",
             "outputPath": "dist/apps/next"
@@ -39,12 +41,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/next/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/next/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/next"],
+          "outputs": [
+            "coverage/apps/next"
+          ],
           "options": {
             "jestConfig": "apps/next/jest.config.js",
             "passWithNoTests": true
@@ -82,7 +88,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/next-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/next-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -113,15 +121,77 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/simple-components/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/simple-components/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/simple-components"],
+          "outputs": [
+            "coverage/libs/simple-components"
+          ],
           "options": {
             "jestConfig": "libs/simple-components/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/simple-components/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "executor": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "outputPath": "dist/storybook/simple-components",
+            "config": {
+              "configFolder": "libs/simple-components/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "simple-components-e2e": {
+      "root": "apps/simple-components-e2e",
+      "sourceRoot": "apps/simple-components-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/simple-components-e2e/cypress.json",
+            "tsConfig": "apps/simple-components-e2e/tsconfig.e2e.json",
+            "devServerTarget": "simple-components:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "simple-components:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/simple-components-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
