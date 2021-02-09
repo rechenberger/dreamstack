@@ -9,12 +9,20 @@
         "build": {
           "executor": "@nrwl/next:build",
           "outputs": ["{options.outputPath}"],
-          "options": { "root": "apps/next", "outputPath": "dist/apps/next" },
-          "configurations": { "production": {} }
+          "options": {
+            "root": "apps/next",
+            "outputPath": "dist/apps/next"
+          },
+          "configurations": {
+            "production": {}
+          }
         },
         "serve": {
           "executor": "@nrwl/next:server",
-          "options": { "buildTarget": "next:build", "dev": true },
+          "options": {
+            "buildTarget": "next:build",
+            "dev": true
+          },
           "configurations": {
             "production": {
               "buildTarget": "next:build:production",
@@ -24,11 +32,15 @@
         },
         "export": {
           "executor": "@nrwl/next:export",
-          "options": { "buildTarget": "next:build:production" }
+          "options": {
+            "buildTarget": "next:build:production"
+          }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["apps/next/**/*.{ts,tsx,js,jsx}"] }
+          "options": {
+            "lintFilePatterns": ["apps/next/**/*.{ts,tsx,js,jsx}"]
+          }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -36,6 +48,15 @@
           "options": {
             "jestConfig": "apps/next/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "build-tailwind-css": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "commands": [
+              "yarn postcss apps/next/pages/styles.css -o apps/next/pages/tailwind.css"
+            ]
           }
         }
       }
@@ -53,12 +74,16 @@
             "devServerTarget": "next:serve"
           },
           "configurations": {
-            "production": { "devServerTarget": "next:serve:production" }
+            "production": {
+              "devServerTarget": "next:serve:production"
+            }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["apps/next-e2e/**/*.{js,ts}"] }
+          "options": {
+            "lintFilePatterns": ["apps/next-e2e/**/*.{js,ts}"]
+          }
         }
       }
     },
@@ -67,19 +92,55 @@
       "projectType": "application",
       "sourceRoot": "apps/strapi/src",
       "targets": {
-        "serve": { "executor": "@nx-extend/strapi:serve" },
+        "serve": {
+          "executor": "@nx-extend/strapi:serve"
+        },
         "build": {
           "executor": "@nx-extend/strapi:build",
-          "configurations": { "production": { "production": true } }
+          "configurations": {
+            "production": {
+              "production": true
+            }
+          }
+        }
+      }
+    },
+    "simple-components": {
+      "root": "libs/simple-components",
+      "sourceRoot": "libs/simple-components/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/simple-components/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/simple-components"],
+          "options": {
+            "jestConfig": "libs/simple-components/jest.config.js",
+            "passWithNoTests": true
+          }
         }
       }
     }
   },
-  "cli": { "defaultCollection": "@nrwl/next" },
+  "cli": {
+    "defaultCollection": "@nrwl/next"
+  },
   "generators": {
-    "@nrwl/react": { "application": { "babel": true } },
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
     "@nrwl/next": {
-      "application": { "style": "styled-components", "linter": "eslint" }
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
     }
   },
   "defaultProject": "next"

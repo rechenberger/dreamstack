@@ -18,6 +18,7 @@
   "projects": {
     "next": { "tags": [] },
     "next-e2e": { "tags": [], "implicitDependencies": ["next"] },
-    "strapi": { "tags": [] }
+    "strapi": { "tags": [] },
+    "simple-components": { "tags": [] }
   }
 }
