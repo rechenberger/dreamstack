@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
+import tw from 'tailwind-styled-components'
 
-const StyledSimpleButton = styled.button.attrs({
-  className: 'border border-gray-500 p-4',
-})`
-  color: pink;
+const StyledSimpleButton = tw.button`
+  border
+  border-gray-500
+  p-4
 `
 
 export const SimpleButton: FunctionComponent<{}> = ({ children }) => {
