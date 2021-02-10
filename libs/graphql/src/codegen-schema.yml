@@ -1,0 +1,14 @@
+overwrite: true
+schema:
+  - https://api.spacex.land/graphql:
+      # headers:
+      #   'x-hasura-admin-secret': ${HASURA_ADMIN_SECRET}
+generates:
+  ./generated/graphql.schema.json:
+    plugins:
+      - 'introspection'
+  ./generated/graphql.min.schema.json:
+    plugins:
+      - 'introspection'
+    config:
+      minify: true
