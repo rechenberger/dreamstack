@@ -4,7 +4,7 @@ import {
   InMemoryCache,
 } from '@apollo/client'
 import React, { FunctionComponent } from 'react'
-const createApolloClient = () => {
+export const createApolloClient = () => {
   return new ApolloClient({
     // uri: process.env.GRAPHQL_URL,
     uri: 'https://api.spacex.land/graphql',

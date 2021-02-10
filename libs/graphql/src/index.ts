@@ -1,2 +1,2 @@
 export * from '../generated/graphql'
-export { ApolloProvider } from './lib/apollo/ApolloProvider'
+export { ApolloProvider, createApolloClient } from './lib/apollo/ApolloProvider'

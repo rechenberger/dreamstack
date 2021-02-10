@@ -1,5 +1,11 @@
-import { useGetShipByIdQuery } from '@dreamstack/graphql'
+import {
+  createApolloClient,
+  GetTopShipsDocument,
+  GetTopShipsQuery,
+  useGetShipByIdQuery,
+} from '@dreamstack/graphql'
 import { SimpleJson } from '@dreamstack/simple-components'
+import { map } from 'lodash'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { FunctionComponent } from 'react'
 import { useParams } from '../../components/hooks/useParams'
@@ -18,7 +24,6 @@ const ShipDetails: FunctionComponent<{ title: string }> = ({ title }) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   console.log(`THIS IS SERVER rendering ${JSON.stringify(params)}`)
-  await new Promise((res) => setTimeout(res, 3000))
   const { shipId } = params
   return {
     props: {
@@ -29,14 +34,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const client = createApolloClient()
+  const { data } = await client.query<GetTopShipsQuery>({
+    query: GetTopShipsDocument,
+  })
+  const paths = map(data?.ships, (ship) => ({
+    params: {
+      shipId: ship.id,
+    },
+  }))
   return {
-    paths: [
-      {
-        params: {
-          shipId: 'GOMSTREE',
-        },
-      },
-    ],
+    paths,
     fallback: true,
   }
 }
