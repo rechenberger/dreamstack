@@ -12,6 +12,7 @@ import { map } from 'lodash'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { FunctionComponent } from 'react'
 import { useParams } from '../../components/hooks/useParams'
+import { getStaticQueries } from '../../lib/getStaticQueries'
 
 const ShipDetails: FunctionComponent = () => {
   const { shipId: id } = useParams()
@@ -24,24 +25,17 @@ const ShipDetails: FunctionComponent = () => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log(`THIS IS SERVER rendering ${JSON.stringify(params)}`)
-  const apolloClient = createApolloClient()
-  const { shipId } = params
-  await apolloClient.query<GetShipByIdQuery, GetShipByIdQueryVariables>({
-    query: GetShipByIdDocument,
-    variables: {
-      id: shipId as string,
-    },
-  })
-
-  return {
-    props: {
-      initialApolloState: apolloClient.cache.extract(),
-    },
-    revalidate: 1,
+export const getStaticProps: GetStaticProps = getStaticQueries(
+  async ({ params, apolloClient }) => {
+    const { shipId } = params
+    await apolloClient.query<GetShipByIdQuery, GetShipByIdQueryVariables>({
+      query: GetShipByIdDocument,
+      variables: {
+        id: shipId as string,
+      },
+    })
   }
-}
+)
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const client = createApolloClient()
