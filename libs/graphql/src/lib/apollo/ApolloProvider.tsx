@@ -1,9 +1,4 @@
-import {
-  ApolloClient,
-  ApolloProvider as ApolloProviderRaw,
-  InMemoryCache,
-} from '@apollo/client'
-import React, { FunctionComponent } from 'react'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 export const createApolloClient = () => {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
@@ -13,7 +8,7 @@ export const createApolloClient = () => {
   })
 }
 
-export const ApolloProvider: FunctionComponent = ({ children }) => {
-  const client = createApolloClient()
-  return <ApolloProviderRaw client={client}>{children}</ApolloProviderRaw>
-}
+// export const ApolloProvider: FunctionComponent = ({ children }) => {
+//   const client = createApolloClient()
+//   return <ApolloProviderRaw client={client}>{children}</ApolloProviderRaw>
+// }
