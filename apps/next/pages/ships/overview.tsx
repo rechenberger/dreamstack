@@ -4,7 +4,10 @@ import { map } from 'lodash'
 import React, { FunctionComponent } from 'react'
 
 const ShipOverview: FunctionComponent = () => {
-  const { data } = useGetTopShipsQuery()
+  const { data, loading } = useGetTopShipsQuery()
+  if (loading) {
+    return <>Loading...</>
+  }
   return (
     <>
       {map(data?.ships, (ship) => {
