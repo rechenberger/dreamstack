@@ -31,6 +31,7 @@
     "simple-components-e2e": {
       "tags": [],
       "implicitDependencies": ["simple-components"]
-    }
+    },
+    "graphql": { "tags": [] }
   }
 }
