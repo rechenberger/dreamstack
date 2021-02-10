@@ -18,6 +18,7 @@ const ShipDetails: FunctionComponent<{ title: string }> = ({ title }) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   console.log(`THIS IS SERVER rendering ${JSON.stringify(params)}`)
+  await new Promise((res) => setTimeout(res, 3000))
   const { shipId } = params
   return {
     props: {
