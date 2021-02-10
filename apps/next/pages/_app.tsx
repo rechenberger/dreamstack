@@ -1,8 +1,8 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
+import '../../../libs/theme/src/lib/tailwind.css'
 import { MainProvider } from '../components/provider/MainProvider'
-import './styles.css'
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (

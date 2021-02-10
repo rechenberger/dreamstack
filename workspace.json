@@ -8,9 +8,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "root": "apps/next",
             "outputPath": "dist/apps/next"
@@ -41,28 +39,15 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/next/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/next/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/next"
-          ],
+          "outputs": ["coverage/apps/next"],
           "options": {
             "jestConfig": "apps/next/jest.config.js",
             "passWithNoTests": true
-          }
-        },
-        "build-tailwind-css": {
-          "executor": "@nrwl/workspace:run-commands",
-          "outputs": [],
-          "options": {
-            "commands": [
-              "yarn postcss apps/next/pages/styles.css -o apps/next/pages/tailwind.css"
-            ]
           }
         }
       }
@@ -88,9 +73,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/next-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/next-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -121,16 +104,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/simple-components/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/simple-components/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/simple-components"
-          ],
+          "outputs": ["coverage/libs/simple-components"],
           "options": {
             "jestConfig": "libs/simple-components/jest.config.js",
             "passWithNoTests": true
@@ -189,9 +168,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/simple-components-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/simple-components-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -204,16 +181,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/graphql/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/graphql/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/graphql"
-          ],
+          "outputs": ["coverage/libs/graphql"],
           "options": {
             "jestConfig": "libs/graphql/jest.config.js",
             "passWithNoTests": true
@@ -229,19 +202,24 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/theme/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/theme/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/theme"
-          ],
+          "outputs": ["coverage/libs/theme"],
           "options": {
             "jestConfig": "libs/theme/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "build-tailwind-css": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "commands": [
+              "yarn postcss libs/theme/src/lib/styles.css -o libs/theme/src/lib/tailwind.css"
+            ]
           }
         }
       }

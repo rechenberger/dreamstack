@@ -1,6 +1,11 @@
 import React from 'react'
-import '../../../apps/next/pages/tailwind.css'
+import '../../../libs/theme/src/lib/tailwind.css'
+// import { ThemeProvider } from '@dreamstack/theme'
 
 export const Layout = ({ children }) => {
-  return <div className="px-20 py-10">{children}</div>
+  return (
+    <>
+      <div className="px-20 py-10">{children}</div>
+    </>
+  )
 }
