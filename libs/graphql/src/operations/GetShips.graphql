@@ -4,7 +4,7 @@ query GetTopShips {
   }
 }
 
-query GetShipById($id: String! = "GOPURSUIT") {
+query GetShipById($id: ID! = "GOPURSUIT") {
   ship(id: $id) {
     ...FullShip
   }
