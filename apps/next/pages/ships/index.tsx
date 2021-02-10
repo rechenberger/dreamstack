@@ -1,6 +1,8 @@
-import { useGetTopShipsQuery } from '@dreamstack/graphql'
+import { GetTopShipsDocument, useGetTopShipsQuery } from '@dreamstack/graphql'
 import { SimpleJson } from '@dreamstack/simple-components'
+import { getStaticQueries } from 'apps/next/lib/getStaticQueries'
 import { map } from 'lodash'
+import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 
@@ -12,7 +14,7 @@ const ShipOverview: FunctionComponent = () => {
   return (
     <>
       {map(data?.ships, (ship) => {
-        const url = `./ships/${ship.id}`
+        const url = `ships/${ship.id}`
         return (
           <Link href={url} key={ship.id}>
             <a>
@@ -24,5 +26,13 @@ const ShipOverview: FunctionComponent = () => {
     </>
   )
 }
+
+export const getStaticProps: GetStaticProps = getStaticQueries(
+  async ({ apolloClient }) => {
+    await apolloClient.query({
+      query: GetTopShipsDocument,
+    })
+  }
+)
 
 export default ShipOverview
