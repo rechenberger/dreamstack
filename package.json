@@ -26,7 +26,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "graphql:schema": "cd libs/graphql/src && graphql-codegen --config codegen-schema.yml -r dotenv/config"
+    "graphql:schema": "DOTENV_CONFIG_PATH=../../../.env cd libs/graphql/src && graphql-codegen --config codegen-schema.yml -r dotenv/config"
   },
   "private": true,
   "dependencies": {

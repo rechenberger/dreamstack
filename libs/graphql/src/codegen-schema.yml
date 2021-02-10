@@ -1,6 +1,6 @@
 overwrite: true
 schema:
-  - https://api.spacex.land/graphql:
+  - ${GRAPHQL_URL}:
       # headers:
       #   'x-hasura-admin-secret': ${HASURA_ADMIN_SECRET}
 generates:
