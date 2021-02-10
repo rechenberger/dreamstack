@@ -28,7 +28,8 @@
     "help": "nx help",
     "graphql": "cd libs/graphql && DOTENV_CONFIG_PATH=../../.env graphql-codegen --config codegen.yml -r dotenv/config",
     "graphql:schema": "cd libs/graphql && DOTENV_CONFIG_PATH=../../.env graphql-codegen --config codegen-schema.yml -r dotenv/config",
-    "storybook": "nx run simple-components:storybook "
+    "storybook": "nx run simple-components:storybook",
+    "e2e-watch": "nx e2e next-e2e --watch"
   },
   "private": true,
   "dependencies": {
