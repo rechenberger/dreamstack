@@ -14,18 +14,21 @@ type StaticQueryCallback = ({
 export const getStaticPropsWithApollo = (callback: StaticQueryCallback) => {
   const getStaticProps: GetStaticProps = async ({ params }) => {
     const apolloClient = initializeApollo()
-    const staticProps: GetStaticPropsResult<any> = (await callback({
-      params,
-      apolloClient,
-    })) || { props: {} }
+
+    const staticProps: any =
+      (await callback({
+        params,
+        apolloClient,
+      })) || {}
 
     return {
+      // TODO: check if `revalidate: 1` is necessary
+      revalidate: 1,
       ...staticProps,
       props: {
         initialApolloState: apolloClient.cache.extract(),
-        ...staticProps.props,
+        ...staticProps?.props,
       },
-      revalidate: 1,
     }
   }
   return getStaticProps
