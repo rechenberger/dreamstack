@@ -1,0 +1,37 @@
+overwrite: true
+schema:
+  - ${NEXT_PUBLIC_GRAPHQL_API}
+    # headers:
+    #   'x-hasura-admin-secret': ${HASURA_ADMIN_SECRET}
+documents: './src/**/*.graphql'
+generates:
+  ./generated/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      reactApolloVersionreactApolloVersion: 3
+      # apolloReactHooksImportFrom: '../apollo/hooks/apolloReactHooks'
+      withHOC: false
+      withComponent: false
+      withHooks: true
+      scalars:
+        UUID: string
+        uuid: string
+        timestamp: string
+        timestamptz: string
+        DateTime: string
+        timetz: string
+        numeric: number
+        # interval: string #TODO: verify that this is always a string
+        # geography: any #TODO:
+        # geometry: any #TODO:
+  ./generated/graphql.schema.json:
+    plugins:
+      - 'introspection'
+  ./generated/graphql.min.schema.json:
+    plugins:
+      - 'introspection'
+    config:
+      minify: true

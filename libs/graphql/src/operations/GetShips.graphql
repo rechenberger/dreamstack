@@ -1,0 +1,18 @@
+query GetTopShips {
+  ships(limit: 5) {
+    ...FullShip
+  }
+}
+
+query GetShipById($id: ID! = "GOPURSUIT") {
+  ship(id: $id) {
+    ...FullShip
+  }
+}
+
+fragment FullShip on Ship {
+  id
+  name
+  home_port
+  image
+}
