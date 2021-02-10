@@ -1,6 +1,6 @@
 overwrite: true
 schema:
-  - ${GRAPHQL_URL}:
+  - ${NEXT_PUBLIC_GRAPHQL_API}:
       # headers:
       #   'x-hasura-admin-secret': ${HASURA_ADMIN_SECRET}
 generates:

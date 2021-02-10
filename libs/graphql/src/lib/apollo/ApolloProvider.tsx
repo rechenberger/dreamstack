@@ -1,9 +1,11 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
+
 export const createApolloClient = () => {
+  const uri = process.env.NEXT_PUBLIC_GRAPHQL_API
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
-    // uri: process.env.GRAPHQL_URL,
-    uri: 'https://api.spacex.land/graphql',
+    uri,
+    // uri: 'https://api.spacex.land/graphql',
     cache: new InMemoryCache(),
   })
 }
