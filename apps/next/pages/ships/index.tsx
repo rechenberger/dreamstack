@@ -27,12 +27,10 @@ const ShipOverview: FunctionComponent = () => {
   )
 }
 
-export const getStaticProps: GetStaticProps = getStaticQueries(
-  async ({ apolloClient }) => {
-    await apolloClient.query({
-      query: GetTopShipsDocument,
-    })
-  }
-)
+export const getStaticProps: GetStaticProps = getStaticQueries([
+  {
+    query: GetTopShipsDocument,
+  },
+])
 
 export default ShipOverview

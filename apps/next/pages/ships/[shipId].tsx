@@ -5,16 +5,16 @@ import {
   GetShipByIdQueryVariables,
   GetTopShipsDocument,
   GetTopShipsQuery,
-  useGetShipByIdQuery
+  useGetShipByIdQuery,
 } from '@dreamstack/graphql'
 import { SimpleJson } from '@dreamstack/simple-components'
 import { map } from 'lodash'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { FunctionComponent } from 'react'
 import { useParams } from '../../components/hooks/useParams'
-import { getStaticQueries } from '../../lib/getStaticQueries'
+import { getStaticPropsWithApollo } from '../../lib/getStaticQueries'
 
-const ShipDetails: FunctionComponent<{title: string}> = ({title}) => {
+const ShipDetails: FunctionComponent<{ title: string }> = ({ title }) => {
   const { shipId: id } = useParams()
   const { data } = useGetShipByIdQuery({ variables: { id } })
   return (
@@ -26,7 +26,7 @@ const ShipDetails: FunctionComponent<{title: string}> = ({title}) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = getStaticQueries(
+export const getStaticProps: GetStaticProps = getStaticPropsWithApollo(
   async ({ params, apolloClient }) => {
     const { shipId } = params
     await apolloClient.query<GetShipByIdQuery, GetShipByIdQueryVariables>({
@@ -38,8 +38,8 @@ export const getStaticProps: GetStaticProps = getStaticQueries(
 
     return {
       props: {
-        title: `This is Server Title ${shipId}`
-      }
+        title: `This is Server Title ${shipId}`,
+      },
     }
   }
 )
