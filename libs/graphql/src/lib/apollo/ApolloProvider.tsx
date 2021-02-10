@@ -6,6 +6,7 @@ import {
 import React, { FunctionComponent } from 'react'
 export const createApolloClient = () => {
   return new ApolloClient({
+    ssrMode: typeof window === 'undefined',
     // uri: process.env.GRAPHQL_URL,
     uri: 'https://api.spacex.land/graphql',
     cache: new InMemoryCache(),

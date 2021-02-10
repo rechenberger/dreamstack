@@ -1,5 +1,8 @@
 import {
   createApolloClient,
+  GetShipByIdDocument,
+  GetShipByIdQuery,
+  GetShipByIdQueryVariables,
   GetTopShipsDocument,
   GetTopShipsQuery,
   useGetShipByIdQuery,
@@ -10,13 +13,12 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { FunctionComponent } from 'react'
 import { useParams } from '../../components/hooks/useParams'
 
-const ShipDetails: FunctionComponent<{ title: string }> = ({ title }) => {
+const ShipDetails: FunctionComponent = () => {
   const { shipId: id } = useParams()
   const { data } = useGetShipByIdQuery({ variables: { id } })
   return (
     <>
       <h1 className="text-2xl m-6">Ship: {id}</h1>
-      <h1 className="text-2xl m-6">Title: {title}</h1>
       <SimpleJson value={data?.ship} />
     </>
   )
@@ -24,12 +26,20 @@ const ShipDetails: FunctionComponent<{ title: string }> = ({ title }) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   console.log(`THIS IS SERVER rendering ${JSON.stringify(params)}`)
+  const apolloClient = createApolloClient()
   const { shipId } = params
+  await apolloClient.query<GetShipByIdQuery, GetShipByIdQueryVariables>({
+    query: GetShipByIdDocument,
+    variables: {
+      id: shipId as string,
+    },
+  })
+
   return {
     props: {
-      shipId,
-      title: `Server says: ${shipId}`,
+      initialApolloState: apolloClient.cache.extract(),
     },
+    revalidate: 1,
   }
 }
 

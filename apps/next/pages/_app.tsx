@@ -10,7 +10,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>DreamStack</title>
       </Head>
-      <MainProvider>
+      <MainProvider pageProps={pageProps}>
         <Component {...pageProps} />
       </MainProvider>
     </>
