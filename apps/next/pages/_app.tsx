@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
+import { MainProvider } from '../components/provider/MainProvider'
 import './styles.css'
 
 function CustomApp({ Component, pageProps }: AppProps) {
@@ -9,7 +10,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>DreamStack</title>
       </Head>
-      <Component {...pageProps} />
+      <MainProvider>
+        <Component {...pageProps} />
+      </MainProvider>
     </>
   )
 }
