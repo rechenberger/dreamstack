@@ -11,7 +11,7 @@ type StaticQueryCallback = ({
   apolloClient: ApolloClient<any>
 }) => Promise<GetStaticPropsResult<any> | void>
 
-export const getStaticQueries = (callback: StaticQueryCallback) => {
+export const getStaticPropsWithApollo = (callback: StaticQueryCallback) => {
   const getStaticProps: GetStaticProps = async ({ params }) => {
     const apolloClient = initializeApollo()
     const staticProps: GetStaticPropsResult<any> = (await callback({
