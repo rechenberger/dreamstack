@@ -29,5 +29,8 @@
       "extends": ["plugin:@nrwl/nx/javascript"],
       "rules": {}
     }
-  ]
+  ],
+  "rules": {
+    "react/jsx-no-useless-fragment": "off"
+  }
 }
