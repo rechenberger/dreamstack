@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@dreamstack/simple-components": ["libs/simple-components/src/index.ts"],
-      "@dreamstack/graphql": ["libs/graphql/src/index.ts"]
+      "@dreamstack/graphql": ["libs/graphql/src/index.ts"],
+      "@dreamstack/theme": ["libs/theme/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

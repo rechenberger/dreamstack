@@ -32,6 +32,7 @@
       "tags": [],
       "implicitDependencies": ["simple-components"]
     },
-    "graphql": { "tags": [] }
+    "graphql": { "tags": [] },
+    "theme": { "tags": [] }
   }
 }
