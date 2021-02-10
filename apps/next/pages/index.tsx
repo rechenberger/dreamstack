@@ -25,7 +25,7 @@ export function Index() {
       </a>
       <Link href="/ships">
         <a>
-          <SimpleButton>Ships</SimpleButton>
+          <SimpleButton>Ships Overview</SimpleButton>
         </a>
       </Link>
     </StyledPage>
