@@ -12,7 +12,7 @@ const ShipOverview: FunctionComponent = () => {
   return (
     <>
       {map(data?.ships, (ship) => {
-        const url = `./${ship.id}`
+        const url = `./ships/${ship.id}`
         return (
           <Link href={url} key={ship.id}>
             <a>
