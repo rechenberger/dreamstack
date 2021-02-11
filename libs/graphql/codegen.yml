@@ -5,7 +5,7 @@ schema:
     #   'x-hasura-admin-secret': ${HASURA_ADMIN_SECRET}
 documents: 'libs/graphql/src/**/*.graphql'
 generates:
-  /libs/graphql/generated/graphql.tsx:
+  ./libs/graphql/generated/graphql.tsx:
     plugins:
       - 'typescript'
       - 'typescript-operations'
@@ -27,10 +27,10 @@ generates:
         # interval: string #TODO: verify that this is always a string
         # geography: any #TODO:
         # geometry: any #TODO:
-  /libs/graphql/generated/graphql.schema.json:
+  ./libs/graphql/generated/graphql.schema.json:
     plugins:
       - 'introspection'
-  /libs/graphql/generated/graphql.min.schema.json:
+  ./libs/graphql/generated/graphql.min.schema.json:
     plugins:
       - 'introspection'
     config:
