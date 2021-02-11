@@ -1,8 +1,7 @@
 import { SimpleButton } from '@dreamstack/simple-components'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { LinkWithLocale } from '../lib/i18n'
+import { LinkWithLocale, useTranslation } from '../lib/i18n'
 
 const StyledPage = styled.div`
   margin: 32px auto;

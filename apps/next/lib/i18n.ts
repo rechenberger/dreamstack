@@ -8,6 +8,8 @@ const i18n = new NextI18Next({
   otherLanguages: ['de'],
   localeSubpaths,
   localePath: path.resolve('apps/next/public/static/locales'),
+  saveMissing: true,
+  missingKeyHandler: (...keys) => console.warn(`i18n Key not found:`, keys),
 })
 
-export const { Link: LinkWithLocale, appWithTranslation } = i18n
+export const { Link: LinkWithLocale, appWithTranslation, useTranslation } = i18n
