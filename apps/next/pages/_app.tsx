@@ -18,8 +18,23 @@ function CustomApp({ Component, pageProps }: AppProps) {
   )
 }
 
-CustomApp.getInitialProps = async (appContext) => ({
-  ...(await App.getInitialProps(appContext)),
-})
+// FROM: https://github.com/isaachinman/next-i18next/issues/652#issuecomment-644618517
+CustomApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext)
+  const defaultProps = appContext.Component.defaultProps
+  const props = {
+    ...appProps,
+    pageProps: {
+      namespacesRequired: [
+        ...(appProps.pageProps.namespacesRequired || []),
+        ...(defaultProps?.i18nNamespaces || []),
+      ],
+    },
+  }
+  return props
+}
+// CustomApp.getInitialProps = async (appContext) => ({
+//   ...(await App.getInitialProps(appContext)),
+// })
 
 export default appWithTranslation(CustomApp)

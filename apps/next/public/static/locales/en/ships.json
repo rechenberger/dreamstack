@@ -1,4 +1,7 @@
 {
   "ship": "Ship",
+  "ship_plural": "Ships",
+  "shipWithCount": "{{count}} Ship",
+  "shipWithCount_plural": "{{count}} Ships",
   "fork-me": "Ship me"
 }
