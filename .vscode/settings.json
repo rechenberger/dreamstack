@@ -6,5 +6,6 @@
     "tw\\.\\w+`([^`]*)", // tw.xxx`...`
     "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
   ],
-  "i18next.i18nPaths": "c:/Users/Tristan/code/dreamstack/apps/next/public/static/locales"
+  "i18n-ally.localesPaths": ["apps/next/public/static/locales"],
+  "i18n-ally.keystyle": "nested"
 }
