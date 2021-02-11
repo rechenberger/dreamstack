@@ -15,11 +15,11 @@ const ShipOverview: FunctionComponent = () => {
   }
   return (
     <>
-      <h1>{t('fork-me')}</h1>
-      <h1>{t('ship')}</h1>
-      <h1>{t('shipWithCount', { count: data?.ships?.length || 0 })}</h1>
+      <h1 className="m-6 text-2xl">
+        {t('shipWithCount', { count: data?.ships?.length || 0 })}
+      </h1>
       {map(data?.ships, (ship) => {
-        const url = `ships/${ship.id}`
+        const url = `/ships/${ship.id}`
         return (
           <LinkWithLocale href={url} key={ship.id}>
             <a>

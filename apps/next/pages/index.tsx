@@ -1,5 +1,4 @@
 import { SimpleButton } from '@dreamstack/simple-components'
-// import Link from 'next/link'
 import React from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import styled from 'styled-components'
@@ -40,8 +39,8 @@ export function Index() {
   )
 }
 
-Index.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'ships'],
-})
+Index.defaultProps = {
+  i18nNamespaces: ['common', 'ships'],
+}
 
 export default Index
