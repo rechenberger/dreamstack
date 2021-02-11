@@ -2,13 +2,14 @@ import { SimpleButton } from '@dreamstack/simple-components'
 import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
+import { withTranslation } from '../lib/i18n'
 
 const StyledPage = styled.div`
   margin: 32px auto;
   width: max-content;
 `
 
-export function Index() {
+export function Index({ t }) {
   return (
     <StyledPage>
       <h1 className="text-4xl mb-4">DreamStack</h1>
@@ -17,7 +18,7 @@ export function Index() {
         target="_blank"
         rel="noreferrer"
       >
-        <SimpleButton>Fork me on GitHub</SimpleButton>
+        <SimpleButton>{t('fork-me')}</SimpleButton>
       </a>
       <Link href="/ships">
         <a>
@@ -31,4 +32,8 @@ export function Index() {
   )
 }
 
-export default Index
+export const getInitialProps = async () => ({
+  namespacesRequired: ['common'],
+})
+
+export default withTranslation('common')(Index)
