@@ -1,4 +1,6 @@
 {
   "fork-me": "Gabel mich auf GitHub",
-  "app-title": "TraumStapel"
+  "app": {
+    "title": "TraumStapel"
+  }
 }

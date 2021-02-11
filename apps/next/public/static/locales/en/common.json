@@ -1,4 +1,6 @@
 {
   "fork-me": "Fork me on GitHub",
-  "app-title": "DreamStack"
+  "app": {
+    "title": "DreamStack"
+  }
 }

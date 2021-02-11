@@ -13,7 +13,7 @@ export function Index() {
   const { t } = useTranslation()
   return (
     <StyledPage>
-      <h1 className="text-4xl mb-4">{t('app-title')}</h1>
+      <h1 className="text-4xl mb-4">{t('app.title')}</h1>
       <a
         href="https://github.com/rechenberger/dreamstack"
         target="_blank"
