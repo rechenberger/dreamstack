@@ -3,7 +3,7 @@ import { SimpleButton } from '@dreamstack/simple-components'
 import React from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { Link } from '../lib/i18n'
+import { LinkWithLocale } from '../lib/i18n'
 
 const StyledPage = styled.div`
   margin: 32px auto;
@@ -25,14 +25,14 @@ export function Index() {
           <Trans>fork-me</Trans>
         </SimpleButton>
       </a>
-      <Link href="/ships">
+      <LinkWithLocale href="/ships">
         <a>
           <SimpleButton>{t('ship')}</SimpleButton>
           <SimpleButton>
             <Trans ns="ships">ship</Trans>
           </SimpleButton>
         </a>
-      </Link>
+      </LinkWithLocale>
       <SimpleButton onClick={() => console.log('this is test button')}>
         Test Button
       </SimpleButton>
