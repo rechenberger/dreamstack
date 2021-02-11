@@ -192,7 +192,7 @@
             "passWithNoTests": true
           }
         },
-        "build": {
+        "build-graphql": {
           "executor": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {

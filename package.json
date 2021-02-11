@@ -27,7 +27,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "graphql": "nx run graphql:build",
+    "graphql": "nx run graphql:build-graphql",
     "graphql:schema": "nx run graphql:build-schema",
     "storybook": "nx run simple-components:storybook",
     "e2e-watch": "nx e2e next-e2e --watch"
