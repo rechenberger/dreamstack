@@ -12,4 +12,4 @@ const i18n = new NextI18Next({
   missingKeyHandler: (...keys) => console.warn(`i18n Key not found:`, keys),
 })
 
-export const { Link: LinkWithLocale, appWithTranslation, useTranslation } = i18n
+export const { Link: LinkWithLocale, appWithTranslation } = i18n
