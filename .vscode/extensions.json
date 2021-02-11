@@ -3,6 +3,7 @@
     "ms-vscode.vscode-typescript-tslint-plugin",
     "esbenp.prettier-vscode",
     "firsttris.vscode-jest-runner",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "lokalise.i18n-ally"
   ]
 }
