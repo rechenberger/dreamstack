@@ -13,3 +13,10 @@ module.exports = new NextI18Next({
   // localePath: path.resolve('../public/static/locales'),
   localePath: path.resolve('apps/next/public/static/locales'),
 })
+// module.exports = new NextI18Next({
+//   defaultLanguage: 'en',
+//   otherLanguages: ['de'],
+//   localeSubpaths,
+//   // localePath: path.resolve('../public/static/locales'),
+//   localePath: path.resolve('apps/next/public/static/locales'),
+// })

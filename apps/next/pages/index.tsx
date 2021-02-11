@@ -1,15 +1,17 @@
 import { SimpleButton } from '@dreamstack/simple-components'
-import Link from 'next/link'
+// import Link from 'next/link'
 import React from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { withTranslation } from '../lib/i18n'
+import { Link } from '../lib/i18n'
 
 const StyledPage = styled.div`
   margin: 32px auto;
   width: max-content;
 `
 
-export function Index({ t }) {
+export function Index() {
+  const { t } = useTranslation(['ships', 'common'])
   return (
     <StyledPage>
       <h1 className="text-4xl mb-4">DreamStack</h1>
@@ -19,10 +21,16 @@ export function Index({ t }) {
         rel="noreferrer"
       >
         <SimpleButton>{t('fork-me')}</SimpleButton>
+        <SimpleButton>
+          <Trans>fork-me</Trans>
+        </SimpleButton>
       </a>
       <Link href="/ships">
         <a>
-          <SimpleButton>Ships</SimpleButton>
+          <SimpleButton>{t('ship')}</SimpleButton>
+          <SimpleButton>
+            <Trans ns="ships">ship</Trans>
+          </SimpleButton>
         </a>
       </Link>
       <SimpleButton onClick={() => console.log('this is test button')}>
@@ -32,8 +40,8 @@ export function Index({ t }) {
   )
 }
 
-export const getInitialProps = async () => ({
-  namespacesRequired: ['common'],
+Index.getInitialProps = async () => ({
+  namespacesRequired: ['common', 'ships'],
 })
 
-export default withTranslation('common')(Index)
+export default Index

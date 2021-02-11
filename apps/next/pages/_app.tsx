@@ -1,4 +1,4 @@
-import { AppProps } from 'next/app'
+import App, { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 import '../../../libs/theme/src/lib/tailwind.css'
@@ -18,8 +18,8 @@ function CustomApp({ Component, pageProps }: AppProps) {
   )
 }
 
-// export const getInitialProps = async (appContext) => ({
-//   ...(await CustomApp.getInitialProps(appContext)),
-// })
+CustomApp.getInitialProps = async (appContext) => ({
+  ...(await App.getInitialProps(appContext)),
+})
 
 export default appWithTranslation(CustomApp)
