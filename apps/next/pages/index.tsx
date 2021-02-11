@@ -1,6 +1,6 @@
 import { SimpleButton } from '@dreamstack/simple-components'
 import React from 'react'
-import { Trans, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { LinkWithLocale } from '../lib/i18n'
 
@@ -10,7 +10,7 @@ const StyledPage = styled.div`
 `
 
 export function Index() {
-  const { t } = useTranslation(['ships', 'common'])
+  const { t } = useTranslation()
   return (
     <StyledPage>
       <h1 className="text-4xl mb-4">DreamStack</h1>
@@ -20,21 +20,13 @@ export function Index() {
         rel="noreferrer"
       >
         <SimpleButton>{t('fork-me')}</SimpleButton>
-        <SimpleButton>
-          <Trans>fork-me</Trans>
-        </SimpleButton>
+        <SimpleButton>{t('ships:fork-me')}</SimpleButton>
       </a>
       <LinkWithLocale href="/ships">
         <a>
-          <SimpleButton>{t('ship')}</SimpleButton>
-          <SimpleButton>
-            <Trans ns="ships">ship</Trans>
-          </SimpleButton>
+          <SimpleButton>{t('ships:ship_plural')}</SimpleButton>
         </a>
       </LinkWithLocale>
-      <SimpleButton onClick={() => console.log('this is test button')}>
-        Test Button
-      </SimpleButton>
     </StyledPage>
   )
 }
