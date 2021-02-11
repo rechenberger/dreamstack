@@ -1,8 +1,8 @@
 import { GetTopShipsDocument, useGetTopShipsQuery } from '@dreamstack/graphql'
 import { SimpleJson } from '@dreamstack/simple-components'
+import { LinkWithLocale } from 'apps/next/lib/i18n'
 import { map } from 'lodash'
 import { GetStaticProps } from 'next'
-import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { getStaticQueries } from '../../lib/getStaticQueries'
@@ -21,11 +21,11 @@ const ShipOverview: FunctionComponent = () => {
       {map(data?.ships, (ship) => {
         const url = `ships/${ship.id}`
         return (
-          <Link href={url} key={ship.id}>
+          <LinkWithLocale href={url} key={ship.id}>
             <a>
               <SimpleJson value={ship} />
             </a>
-          </Link>
+          </LinkWithLocale>
         )
       })}
     </>
