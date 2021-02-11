@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "nx": "nx",
+    "prepare": "yarn build:tailwind && yarn graphql",
     "start": "nx serve",
     "build": "nx build",
     "build:tailwind": "nx run theme:build-tailwind-css",
@@ -26,8 +27,8 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "graphql": "cd libs/graphql && DOTENV_CONFIG_PATH=../../.env graphql-codegen --config codegen.yml -r dotenv/config",
-    "graphql:schema": "cd libs/graphql && DOTENV_CONFIG_PATH=../../.env graphql-codegen --config codegen-schema.yml -r dotenv/config",
+    "graphql": "nx run graphql:build",
+    "graphql:schema": "nx run graphql:build-schema",
     "storybook": "nx run simple-components:storybook",
     "e2e-watch": "nx e2e next-e2e --watch"
   },

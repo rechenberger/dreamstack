@@ -24,6 +24,9 @@ export function Index() {
           <SimpleButton>Ships</SimpleButton>
         </a>
       </Link>
+      <SimpleButton onClick={() => console.log('this is test button')}>
+        Test Button
+      </SimpleButton>
     </StyledPage>
   )
 }
