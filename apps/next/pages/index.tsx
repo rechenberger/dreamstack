@@ -1,17 +1,21 @@
 import { SimpleButton } from '@dreamstack/simple-components'
 import Link from 'next/link'
 import React from 'react'
-import styled from 'styled-components'
+import tw from 'tailwind-styled-components'
 
-const StyledPage = styled.div`
-  margin: 32px auto;
-  width: max-content;
+const StyledPage = tw.div`
+  mx-auto
+  my-8
+  w-max
+  flex
+  flex-col
+  gap-2
 `
 
 export function Index() {
   return (
     <StyledPage>
-      <h1 className="text-4xl mb-4">DreamStack</h1>
+      <h1 className="text-4xl">DreamStack</h1>
       <a
         href="https://github.com/rechenberger/dreamstack"
         target="_blank"
@@ -21,7 +25,7 @@ export function Index() {
       </a>
       <Link href="/ships">
         <a>
-          <SimpleButton>Ships</SimpleButton>
+          <SimpleButton>Ships Overview</SimpleButton>
         </a>
       </Link>
       <SimpleButton onClick={() => console.log('this is test button')}>
