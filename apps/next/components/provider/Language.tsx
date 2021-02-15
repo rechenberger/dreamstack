@@ -29,7 +29,3 @@ export const Language: FunctionComponent = () => {
     </div>
   )
 }
-
-Language.defaultProps = {
-  i18nNamespaces: ['common'],
-}
