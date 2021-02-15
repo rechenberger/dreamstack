@@ -8,7 +8,7 @@ import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 import { getStaticPropsWithApollo } from '../../lib/getStaticQueries'
 
-const ShipOverview: FunctionComponent = () => {
+const ShipOverview: FunctionComponent<{ now: string }> = ({ now }) => {
   console.log('rendering ships overview')
   const { data, loading } = useGetTopShipsQuery()
   const { t } = useTranslation('ships')
@@ -20,6 +20,7 @@ const ShipOverview: FunctionComponent = () => {
       <h1 className="m-6 text-2xl">
         {t('shipWithCount', { count: data?.ships?.length || 0 })}
       </h1>
+      <h2 className="m-6 text-xl">rendered at: {now}</h2>
       {map(data?.ships, (ship) => {
         const url = `/ships/${ship.id}`
         return (
@@ -46,6 +47,7 @@ export const getStaticProps: GetStaticProps = getStaticPropsWithApollo(
         ...(await serverSideTranslations(locale, ['ships', 'common'], {
           localePath: 'apps/next/public/static/locales',
         })),
+        now: new Date().toISOString(),
       },
     }
   }
