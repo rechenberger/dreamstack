@@ -4,10 +4,11 @@ import path from 'path'
 const { localeSubpaths } = config().publicRuntimeConfig
 
 const i18n = new NextI18Next({
-  defaultLanguage: 'en',
-  otherLanguages: ['de'],
+  defaultLanguage: 'de',
+  otherLanguages: ['en'],
   localeSubpaths,
   localePath: path.resolve('apps/next/public/static/locales'),
+  // localeStructure:'',
   saveMissing: true,
   missingKeyHandler: (...keys) => console.warn(`i18n Key not found:`, keys),
 })

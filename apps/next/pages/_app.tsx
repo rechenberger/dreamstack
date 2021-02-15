@@ -2,6 +2,7 @@ import App, { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 import '../../../libs/theme/src/lib/tailwind.css'
+import { Language } from '../components/provider/Language'
 import { MainProvider } from '../components/provider/MainProvider'
 import { appWithTranslation } from '../lib/i18n'
 
@@ -12,6 +13,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>DreamStack</title>
       </Head>
       <MainProvider pageProps={pageProps}>
+        <Language />
         <Component {...pageProps} />
       </MainProvider>
     </>
@@ -22,6 +24,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
 CustomApp.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext)
   const defaultProps = appContext.Component.defaultProps
+
   const props = {
     ...appProps,
     pageProps: {
