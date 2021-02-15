@@ -25,6 +25,8 @@ CustomApp.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext)
   const defaultProps = appContext.Component.defaultProps
 
+  console.log('getInitialProps', appContext.router)
+
   const props = {
     ...appProps,
     pageProps: {

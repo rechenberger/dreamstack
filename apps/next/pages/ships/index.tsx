@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { getStaticQueries } from '../../lib/getStaticQueries'
 
 const ShipOverview: FunctionComponent = () => {
+  console.log('rendering ships overview')
   const { data, loading } = useGetTopShipsQuery()
   const { t } = useTranslation('ships')
   if (loading) {
