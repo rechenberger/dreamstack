@@ -1,0 +1,8 @@
+{
+  "fork-me": "Fork me on GitHub",
+  "app": {
+    "title": "DreamStack"
+  },
+  "currentLanguage": "Current locale",
+  "changeLanguageTo": "Switch to"
+}

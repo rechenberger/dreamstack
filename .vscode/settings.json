@@ -5,5 +5,19 @@
     // "tw={\"([^\"}]*)", // <div tw={"..."} />
     "tw\\.\\w+`([^`]*)", // tw.xxx`...`
     "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
-  ]
+  ],
+  "i18n-ally.localesPaths": [
+    "apps/next/public/static/locales"
+  ],
+  "i18n-ally.defaultNamespace": "common",
+  "i18n-ally.enabledFrameworks": [
+    "i18next",
+    "react"
+  ],
+  "i18n-ally.annotationInPlace": false,
+  "i18n-ally.annotationDelimiter": "->",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.namespace": true,
+  "i18n-ally.pathMatcher": "{locale}/{namespace}.json",
+  "i18n-ally.displayLanguage": "en",
 }
