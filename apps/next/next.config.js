@@ -4,11 +4,15 @@ const { nextI18NextRewrites } = require('next-i18next/rewrites')
 const withNx = require('@nrwl/next/plugins/with-nx')
 
 const localeSubpaths = {
-  de: 'german',
-  en: 'eng',
+  de: 'de',
+  en: 'en',
 }
 
 module.exports = withNx({
+  // i18n: {
+  //   locales: ['de', 'en'],
+  //   defaultLocale: 'en',
+  // },
   rewrites: async () => nextI18NextRewrites(localeSubpaths),
   publicRuntimeConfig: {
     localeSubpaths,
