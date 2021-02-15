@@ -1,8 +1,11 @@
 import { SimpleButton } from '@dreamstack/simple-components'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Link from 'next/link'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { LinkWithLocale } from '../lib/i18n'
+import { getStaticPropsWithApollo } from '../lib/getStaticQueries'
 
 const StyledPage = styled.div`
   margin: 32px auto;
@@ -22,17 +25,26 @@ export function Index() {
         <SimpleButton>{t('fork-me')}</SimpleButton>
         <SimpleButton>{t('ships:fork-me')}</SimpleButton>
       </a>
-      <LinkWithLocale href="/ships">
+      <Link href="/ships">
         <a>
           <SimpleButton>{t('ships:ship_plural')}</SimpleButton>
         </a>
-      </LinkWithLocale>
+      </Link>
     </StyledPage>
   )
 }
 
-Index.defaultProps = {
-  i18nNamespaces: ['common', 'ships'],
-}
+export const getStaticProps: GetStaticProps = getStaticPropsWithApollo(
+  async ({ locale }) => {
+    return {
+      props: {
+        // TODO: refactor
+        ...(await serverSideTranslations(locale, ['ships', 'common'], {
+          localePath: 'apps/next/public/static/locales',
+        })),
+      },
+    }
+  }
+)
 
 export default Index

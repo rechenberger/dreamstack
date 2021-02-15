@@ -9,19 +9,21 @@ type GetStaticPropsWithApolloCallback = ({
   apolloClient,
 }: {
   params: ParsedUrlQuery
+  locale: any
   apolloClient: ApolloClient<any>
 }) => Promise<GetStaticPropsResult<any> | void>
 
 export const getStaticPropsWithApollo = (
   callback: GetStaticPropsWithApolloCallback
 ) => {
-  const getStaticProps: GetStaticProps = async ({ params }) => {
+  const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     const apolloClient = initializeApollo()
 
     const staticProps: any =
       (await callback({
         params,
         apolloClient,
+        locale,
       })) || {}
 
     return {

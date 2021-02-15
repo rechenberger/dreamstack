@@ -1,11 +1,12 @@
 import { GetTopShipsDocument, useGetTopShipsQuery } from '@dreamstack/graphql'
 import { SimpleJson } from '@dreamstack/simple-components'
-import { LinkWithLocale } from 'apps/next/lib/i18n'
 import { map } from 'lodash'
 import { GetStaticProps } from 'next'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
-import { useTranslation } from 'react-i18next'
-import { getStaticQueries } from '../../lib/getStaticQueries'
+import { getStaticPropsWithApollo } from '../../lib/getStaticQueries'
 
 const ShipOverview: FunctionComponent = () => {
   console.log('rendering ships overview')
@@ -22,25 +23,32 @@ const ShipOverview: FunctionComponent = () => {
       {map(data?.ships, (ship) => {
         const url = `/ships/${ship.id}`
         return (
-          <LinkWithLocale href={url} key={ship.id}>
+          <Link href={url} key={ship.id}>
             <a>
               <SimpleJson value={ship} />
             </a>
-          </LinkWithLocale>
+          </Link>
         )
       })}
     </>
   )
 }
 
-export const getStaticProps: GetStaticProps = getStaticQueries([
-  {
-    query: GetTopShipsDocument,
-  },
-])
+export const getStaticProps: GetStaticProps = getStaticPropsWithApollo(
+  async ({ apolloClient, locale }) => {
+    await apolloClient.query({
+      query: GetTopShipsDocument,
+    })
 
-ShipOverview.defaultProps = {
-  i18nNamespaces: ['ships'],
-}
+    return {
+      props: {
+        // TODO: refactor
+        ...(await serverSideTranslations(locale, ['ships', 'common'], {
+          localePath: 'apps/next/public/static/locales',
+        })),
+      },
+    }
+  }
+)
 
 export default ShipOverview
