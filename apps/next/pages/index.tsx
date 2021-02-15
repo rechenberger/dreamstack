@@ -1,11 +1,11 @@
 import { SimpleButton } from '@dreamstack/simple-components'
 import { GetStaticProps } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { getStaticPropsWithApollo } from '../lib/getStaticQueries'
+import { getStaticTranslations } from '../lib/getStaticTranslations'
 
 const StyledPage = styled.div`
   margin: 32px auto;
@@ -38,10 +38,7 @@ export const getStaticProps: GetStaticProps = getStaticPropsWithApollo(
   async ({ locale }) => {
     return {
       props: {
-        // TODO: refactor
-        ...(await serverSideTranslations(locale, ['ships', 'common'], {
-          localePath: 'apps/next/public/static/locales',
-        })),
+        ...(await getStaticTranslations(locale, ['ships', 'common'])),
       },
     }
   }

@@ -1,9 +1,9 @@
 import { GetTopShipsDocument, useGetTopShipsQuery } from '@dreamstack/graphql'
 import { SimpleJson } from '@dreamstack/simple-components'
+import { getStaticTranslations } from 'apps/next/lib/getStaticTranslations'
 import { map } from 'lodash'
 import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 import { getStaticPropsWithApollo } from '../../lib/getStaticQueries'
@@ -43,10 +43,7 @@ export const getStaticProps: GetStaticProps = getStaticPropsWithApollo(
 
     return {
       props: {
-        // TODO: refactor
-        ...(await serverSideTranslations(locale, ['ships', 'common'], {
-          localePath: 'apps/next/public/static/locales',
-        })),
+        ...(await getStaticTranslations(locale, ['ships', 'common'])),
         now: new Date().toISOString(),
       },
     }
